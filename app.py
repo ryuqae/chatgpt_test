@@ -28,7 +28,6 @@ agent = Agent(
     presence_penalty=presence_penalty,
 )
 
-st.write("engine: ", agent.engine)
 message = st.text_area("고민거리")
 st.write(agent.prompt + message)
 
