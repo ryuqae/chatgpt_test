@@ -15,7 +15,8 @@ with st.sidebar:
     presence_penalty = st.slider("Presence Penalty", 0.0, 1.0, 0.6, 0.05)
 
     engine = st.radio(
-        "Engine", ["text-davinci-003", "text-davinci-002", "text-davinci-001"]
+        "Engine",
+        ["text-davinci-003", "text-davinci-002", "text-davinci-001", "gpt-3.5-turbo"],
     )
 
 
