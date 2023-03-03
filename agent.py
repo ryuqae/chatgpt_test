@@ -6,38 +6,35 @@ load_dotenv()
 openai.api_key = os.getenv("APIKEY")
 
 
-completion = openai.ChatCompletion()
-
-
 class Agent:
     def __init__(
         self,
-        prompt,
         engine,
         temperature,
         max_tokens,
         frequency_penalty,
         presence_penalty,
     ):
-        self.prompt = prompt
         self.engine = engine
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.frequency_penalty = frequency_penalty
         self.presence_penalty = presence_penalty
 
-    def respond(self, message):
-        response = completion.create(
-            engine=self.engine,
-            prompt=self.prompt + message + "\n- AI: ",
+    def respond(self, gaslighting, message):
+        response = openai.ChatCompletion.create(
+            model=self.engine,
+            messages=[
+                {"role": "system", "content": f"{gaslighting}"},
+                {"role": "user", "content": f"{message}"},
+            ],
             temperature=self.temperature,
             max_tokens=self.max_tokens,
             top_p=1,
             frequency_penalty=self.frequency_penalty,
             presence_penalty=self.presence_penalty,
-            stop=["- AI: "],
         )
-        return response.choices[0].text
+        return response.choices[0]
 
 
 if __name__ == "__main__":

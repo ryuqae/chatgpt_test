@@ -1,12 +1,10 @@
 from agent import Agent
 import streamlit as st
 
-prompt = "The following is a conversation with an AI assistant. The assistant is empathetic, helpful and very friendly. Please respond to following human feelings or experiences.\n\n- Human: "
-
 
 st.title("AI Chatbot")
 
-st.write("잎클이: 안녕하세요. 잎클이입니다. 무엇이든 물어보세요.")
+st.write("잎클이: 안녕하세요. 잎클이입니다. 어떤 고민이든 나눠보아요.")
 
 with st.sidebar:
     temperature = st.slider("Temperature", 0.0, 1.0, 0.9, 0.05)
@@ -16,12 +14,13 @@ with st.sidebar:
 
     engine = st.radio(
         "Engine",
-        ["text-davinci-003", "text-davinci-002", "text-davinci-001", "gpt-3.5-turbo"],
+        [
+            "gpt-3.5-turbo",
+        ],
     )
 
 
 agent = Agent(
-    prompt=prompt,
     engine=engine,
     temperature=temperature,
     max_tokens=max_tokens,
@@ -29,9 +28,11 @@ agent = Agent(
     presence_penalty=presence_penalty,
 )
 
+gaslighting = st.text_area("가스라이팅")
+
 message = st.text_area("고민거리")
-st.write(agent.prompt + message)
 
 if st.button("Send"):
-    completion = agent.respond(message)
-    st.write("잎클이: ", completion)
+    responses = []
+    completion = agent.respond(message=message, gaslighting=gaslighting)
+    st.write(f"잎클이: {completion['message']['content']}")
