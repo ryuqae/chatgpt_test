@@ -6,7 +6,7 @@ load_dotenv()
 openai.api_key = os.getenv("APIKEY")
 
 
-completion = openai.Completion()
+completion = openai.ChatCompletion()
 
 
 class Agent:
