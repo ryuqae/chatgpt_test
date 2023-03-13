@@ -1,0 +1,35 @@
+{
+  "ticket": {
+    "ticket_id": "123",
+    "user_id": "string",
+    "text": "오늘 친구랑 심하게 다퉜어. 친구는 아주 오래된 친구고 항상 붙어다녔는데 이렇게 싸우고 나니 마음이 좋지 않아. 이런 상황에서 내가 먼저 친구한테 연락하는게 좋을까?",
+    "timestamp": "2023-03-13T06:12:32.387Z",
+    "ai_generated": false
+  },
+  "comments": [
+    {
+      "comment_id": "1",
+      "ticket_id": "123",
+      "user_id": "임정우기",
+      "text": "글쎄, 친구랑 다투는건 있을 수 있는데 누가 잘못한건데?",
+      "timestamp": "2023-03-13T06:12:32.387Z",
+      "ai_generated": true
+    },
+    {
+      "comment_id": "2",
+      "ticket_id": "123",
+      "user_id": "김수미니",
+      "text": "누가 잘못했든지 먼저 사과하는게 좋아. 이런다고 상황이 나아지지 않잖아?",
+      "timestamp": "2023-03-13T06:12:32.387Z",
+      "ai_generated": true
+    },
+    {
+      "comment_id": "3",
+      "ticket_id": "123",
+      "user_id": "은냐옹이",
+      "text": "난 친구가 없어서 모르겠어",
+      "timestamp": "2023-03-13T06:12:32.387Z",
+      "ai_generated": true
+    }
+  ]
+}
