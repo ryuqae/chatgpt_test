@@ -2,6 +2,7 @@ from agent import Agent
 from typing import List
 from customtype import Ticket
 import streamlit as st
+from datetime import datetime
 
 
 st.title("AI Chatbot")
@@ -37,5 +38,13 @@ message = st.text_area("고민거리")
 
 if st.button("Send"):
     responses = []
-    completion = agent.respond(ticket=Ticket(text=message), botsona=gaslighting)
+
+    ticket = Ticket(
+        ticket_id="123",
+        user_id="131",
+        text=message,
+        timestamp=datetime.now(),
+        ai_generated=False,
+    )
+    completion = agent.respond(ticket=ticket, botsona=gaslighting)
     st.write(f"잎클이: {completion['message']['content']}")
