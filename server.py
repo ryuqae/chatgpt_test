@@ -18,10 +18,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    t1 = Ticket(
-        "1", "abc", "오늘 하루는 별로 기분이 좋지 않다. 이유를 모르겠는데 방법이 있을리가", datetime.now(), False
-    )
-    return t1
+    return "잎클: 안녕? 나는 인공지능이야."
 
 
 @app.get("/ai_ticket/")
@@ -56,9 +53,6 @@ async def get_comment(
     comments: List[Comment],
 ) -> Comment:
     assert len(ticket.text) > 3, "입력값의 길이는 0보다 커야 합니다."
-    # content = """오늘 친구랑 심하게 다퉜어. 친구는 아주 오래된 친구고 항상 붙어다녔는데 이렇게 싸우고 나니 마음이 좋지 않아. 이런 상황에서 내가 먼저 친구한테 연락하는게 좋을까?"""
-    # comments = ["굳이 먼저 연락 안해도 될 것 같은데요?", "친구가 잘못한건가요?"]
-    # comments = {"comments": comments}
 
     agent = Agent(
         engine="gpt-3.5-turbo",
