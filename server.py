@@ -1,4 +1,5 @@
 # -*-coding:utf-8-*-
+import uvicorn
 
 from fastapi import FastAPI, Query
 from typing import Union, List
@@ -77,3 +78,7 @@ async def get_comment(
         ai_generated=True,
     )
     return new_comment
+
+
+if __name__ == "__main__":
+    uvicorn.run("server:app", host="0.0.0.0", port=8000, log_level="info")
