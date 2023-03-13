@@ -12,13 +12,20 @@ openai.api_key = os.getenv("APIKEY")
 
 class Agent:
     def __init__(
-        self, engine, temperature, max_tokens, frequency_penalty, presence_penalty, type
+        self,
+        engine,
+        temperature,
+        max_tokens,
+        frequency_penalty,
+        presence_penalty,
+        type,
     ):
         self.engine = engine
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.frequency_penalty = frequency_penalty
         self.presence_penalty = presence_penalty
+        assert type in ["ticket", "comment", "botsona"]
         self.type = type
 
     def respond(
@@ -26,6 +33,7 @@ class Agent:
         ticket: Ticket = None,
         comments: List[Comment] = None,
         ticket_keyword: str = None,
+        botsona: str = None,
     ):
         if self.type == "ticket":
             assert ticket_keyword is not None, "Ticket을 발행하려면 키워드가 필요합니다."
@@ -48,6 +56,12 @@ class Agent:
                     {"role": "assistant", "content": comment.text}
                     for comment in comments[-3:]
                 ],
+            ]
+        elif self.type == "botsona":
+            assert botsona is not None, "botsona를 지정해주어야 합니다."
+            messages = [
+                {"role": "system", "content": botsona},
+                {"role": "user", "content": ticket.text},
             ]
 
         response = openai.ChatCompletion.create(

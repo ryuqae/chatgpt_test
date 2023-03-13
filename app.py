@@ -1,4 +1,6 @@
 from agent import Agent
+from typing import List
+from customtype import Ticket
 import streamlit as st
 
 
@@ -26,6 +28,7 @@ agent = Agent(
     max_tokens=max_tokens,
     frequency_penalty=frequency_penalty,
     presence_penalty=presence_penalty,
+    type="botsona",
 )
 
 gaslighting = st.text_area("가스라이팅")
@@ -34,5 +37,5 @@ message = st.text_area("고민거리")
 
 if st.button("Send"):
     responses = []
-    completion = agent.respond(message=message, gaslighting=gaslighting)
+    completion = agent.respond(ticket=Ticket(text=message), botsona=gaslighting)
     st.write(f"잎클이: {completion['message']['content']}")
