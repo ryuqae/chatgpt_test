@@ -29,10 +29,10 @@ class Agent:
     ):
         if self.type == "ticket":
             assert ticket_keyword is not None, "Ticket을 발행하려면 키워드가 필요합니다."
-            botsona = f"{ticket_keyword}에 관련된 사람들의 고민 한 가지를 200자 이내로 친구에게 털어놓듯이 얘기하는 봇"
+            botsona = f"{ticket_keyword}에 관련된 고민 한 가지를 200자 이내로 친구에게 털어놓듯이 얘기하는 봇"
             messages = [
                 {"role": "system", "content": botsona},
-                {"role": "user", "content": "그 고민을 갖고있는 사람이 상담을 받는것처럼 얘기해줘"},
+                {"role": "user", "content": "그 고민을 갖고있는 사람이 말하는것처럼 얘기해줘"},
             ]
 
         elif self.type == "comment":
