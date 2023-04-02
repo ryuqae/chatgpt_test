@@ -6,8 +6,12 @@ from typing import Union, List
 from customtype import Ticket, Comment
 
 # from fastapi.encoders import jsonable_encoder
-from datetime import datetime
+# from datetime import datetime
 from agent import Agent
+
+# DB package
+import datetime
+
 
 temperature = 1.0
 max_tokens = 300
